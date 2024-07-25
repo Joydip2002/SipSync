@@ -1,0 +1,178 @@
+:root{
+   --body-bg:#111315;
+   --content-bg:#1B1D1F;
+   --white-text:#fff;
+   --blur-text:#6F757C;
+}
+*{
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--body-bg);
+}
+.coffeeMainContent{
+    position: absolute;
+    background-color: var(--content-bg);
+    width: 85%;
+    /* bottom: 15%; */
+    top: 20%;
+    border-radius: 20px;
+    padding: 10px
+}
+.centerContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gap10{
+    gap:10px;
+}
+.coffeeOuterContainer{
+    display: flex;
+    justify-content: center;
+}
+.coffeeContentHeading{
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 25%;
+}
+.coffeeContentHeading h2{
+    color: var(--white-text);
+    font-size: 2rem;
+    margin: 0 !important;
+}
+.coffeeContentHeading p{
+    color: var(--white-text);
+    font-size: 1rem;
+    color: var(--blur-text);
+    max-width: 40%;
+    text-align: center;
+}
+.coffeeListFilterContainer p{
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: var(--white-text);
+    font-weight: 500;
+}
+.coffeeListFilterContainer p.active{
+    background-color: var(--blur-text);
+    color: var(--white-text);
+    border: 1px solid;
+}
+.coffeeListingContainer{
+    /* padding: 0 80px; */
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+}
+.cardImage img{
+    border-radius: 10px;
+}
+.cardDetails{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+}
+.cardDetails span{
+    color: var(--white-text);
+}
+.cardDetails > :nth-child(2){
+    font-size: 12px;
+    padding: 4px 8px;
+    background-color: #BEE3CC;
+    border-radius: 5px;
+    color: #000;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ratingVoteDetails{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    margin: 0;
+    color: var(--white-text);
+}
+.ratingPart{
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    margin: 0;
+}
+.ratingPart span{
+    font-size: 14px;
+}
+.innerListingContainer{
+    padding: 10px;
+}
+.innerListingContainer:hover{
+    /* transition: ease-in-out; */
+    background-color:  rgba(137, 116, 116, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.truncatebyLine{
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+}
+.by4{
+    -webkit-line-clamp: 4;
+}
+
+/* modal css */
+/* CoffeeModal.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    /* align-items: center; */
+    justify-content: end;
+    z-index: 10;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    /* border-radius: 8px; */
+    position: relative;
+    /* max-width: 90%; */
+    /* max-height: 80%; */
+    overflow: auto;
+    z-index: 11;
+    transition: ease-in-out;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100px;
+    height: auto;
+    border-radius: 10px;
+    /* background-color: rgb(17, 17, 17); */
+    /* padding: 10px; */
+}
+
+.modal-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* modal css */
