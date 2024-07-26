@@ -41,7 +41,9 @@ const CoffeeContent:React.FC= () => {
         <div className="coffeeOuterContainer">
                 <div className="coffeeMainContent"> 
                     <div style={{position:'relative', background:'transparent', display:'flex',justifyContent:'center',padding:'10px 0'}}>
-                        <img src={coffeeContentImg} alt="coffeeContentImg" style={{background:'transparent'}} />
+                        <div>
+                            <img src={coffeeContentImg} alt="coffeeContentImg" style={{background:'transparent'}} />
+                        </div>
                         <div className="coffeeContentHeading">
                             <h2>Our Collection</h2>
                             <p className='truncatebyLine by4'>Introducing our Coffee Collection, a selection of unique coffees from different roast types and origins, expertly roasted in small batches and shipped fresh weekly.</p>

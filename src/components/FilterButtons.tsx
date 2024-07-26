@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { filterProps } from "../Interface/interface";
 const FilterButtons:React.FC<filterProps>=({name,onClick,isActive})=>{
     const filterFunc=()=>{

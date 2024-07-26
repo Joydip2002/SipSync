@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import fillrating from '../assets/Star_fill.svg';
 import rating from '../assets/Star.svg';
-import {CoffeeList} from '../Interface/interface';
 import CoffeeModal from './CoffeeModal';
 
 const CoffeeCard:React.FC<any>=({getData})=>{
     const [isModalOpen,setModalOpen] = useState(false);
     const [modalData,setModalData] = useState([]);
-    const openCoffeeModal=(data:CoffeeList)=>{
+    const openCoffeeModal=(data:any)=>{
         setModalOpen(true);
         setModalData(data);
     }
@@ -15,7 +14,14 @@ const CoffeeCard:React.FC<any>=({getData})=>{
         setModalOpen(false);
         setModalData([]);
     }
-    console.log(modalData);
+    // document.addEventListener('click',(event)=>{
+    //     if(!event.target.closest(".modal-overlay")){
+    //         onCloseModal();
+    //     }
+    // })
+    // console.log(modalData);
+    // var outsideClick = document.getElementsByName('.modal-overlay');
+    
     
     return (
         <>
@@ -34,7 +40,7 @@ const CoffeeCard:React.FC<any>=({getData})=>{
                         {getData.rating?
                         <>
                             <span>{getData.rating}</span>
-                            <span style={{color:'gray'}}>({getData.votes+' votes'??''})</span>
+                            <span style={{color:'gray'}}>({getData.votes+' votes'})</span>
                         </>
                         :<span style={{color:'gray'}}>No ratings</span>}
                     </p>
