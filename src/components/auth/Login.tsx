@@ -1,11 +1,50 @@
 import { useState } from 'react';
 import sipsync from '../../assets/sipsynclogo.png';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Home from '../Home';
+
 const Login=()=>{
+    const navigate=useNavigate();
     const [isForm,setForm] = useState("login");
     const [activeForm,setActiveForm]=useState(true);
+    const [login,setLoginData]=useState({
+        username:'',
+        password:''
+    });
+
     const openForm=(type:string)=>{
         setForm(type);
         setActiveForm(true);
+    }
+    const loginhandleFunc=(e : React.ChangeEvent<HTMLInputElement>)=>{
+        setLoginData({...login,[e.target.name]:e.target.value});
+    }
+    const loginFunc=async (e:React.DOMAttributes<HTMLFormElement>)=>{
+        e.preventDefault();
+        try{
+            if(login.password!="" && login.password!=""){
+                const loginApi='http://127.0.0.1:200/login';
+                const data = await axios.post(loginApi,login);
+                if(data.data.status==200){
+                    toast.success(data.data.msg);
+                    localStorage.setItem('user',data.data?.data.email);
+                    return navigate('/');
+                }else{
+                    toast.error(data.data.msg)
+                }
+            }else{
+                toast.info('Please fill up required field')
+            }
+        }catch (e) {
+            return toast.error(e);
+        }
+    }
+    if(localStorage.getItem('user')){
+        return (
+            <Home/>
+        )
     }
     return(
         <>
@@ -23,11 +62,13 @@ const Login=()=>{
                         <div className="loginSignupform">
                             {
                                 isForm=='login'?
-                                <div className='login'>
-                                    <input type="text" placeholder="Username/Email" />
-                                    <input type="password" placeholder="Password" />
-                                    <button>Login</button>
-                                </div>
+                                <form action="" onSubmit={loginFunc}>
+                                    <div className='login'>
+                                        <input type="text" name="username" value={login.username} placeholder="Username/Email" onChange={loginhandleFunc}/>
+                                        <input type="password" name="password" value={login.password} placeholder="Password" onChange={loginhandleFunc}/>
+                                        <button>Login</button>
+                                    </div>
+                                </form>
                                 :
                             <div className='signup'>
                                 <input type="text" placeholder='Enter your name' />
