@@ -13,21 +13,13 @@ const CoffeeCard:React.FC<any>=({getData})=>{
     const onCloseModal=()=>{
         setModalOpen(false);
         setModalData([]);
-    }
-    // document.addEventListener('click',(event)=>{
-    //     if(!event.target.closest(".modal-overlay")){
-    //         onCloseModal();
-    //     }
-    // })
-    // console.log(modalData);
-    // var outsideClick = document.getElementsByName('.modal-overlay');
-    
+    }    
     
     return (
         <>
-            <div key={getData.id??''} onClick={()=>openCoffeeModal(getData)}>
+            {getData && <div key={getData.id??''} onClick={()=>openCoffeeModal(getData)}>
                 <div className='cardImage' style={{position:'relative'}}>
-                    <img src={getData.image} alt={getData.name} height="150px"/>
+                    <img src={getData.image} alt={getData.name} height="150px" width="250px"/>
                     <span>{getData.popular?<span style={{margin:'8px 0 0 8px',padding:'4px 8px', borderRadius:'10px',position:'absolute',left:'0',color:'#000',fontSize:'10px',background:'#F6C768'}}>Popular</span>:''}</span>
                 </div>
                 <div className='cardDetails'>
@@ -47,6 +39,7 @@ const CoffeeCard:React.FC<any>=({getData})=>{
                     <span>{getData.available?'':<span style={{color:'red',fontSize:'12px'}}>Sold out</span>}</span>
                 </div>
             </div>
+            }
             {
                 isModalOpen && modalData && (<CoffeeModal data={modalData} onClose={onCloseModal} />)
             }

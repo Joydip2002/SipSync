@@ -4,6 +4,7 @@ import CoffeeCard from './Coffeecard';
 import FilterButtons from './FilterButtons';
 import {CoffeeList} from '../Interface/interface';
 import axios from 'axios';
+import SkeletonCard from './SkeletonCard';
 
 const CoffeeContent:React.FC= () => {
     const [data,setData] = useState([]);
@@ -57,7 +58,11 @@ const CoffeeContent:React.FC= () => {
                     {
                         isLoading
                         ?
-                        <div style={{textAlign:'center',color:'#fff'}}>Loading data...</div>
+                        <div style={{display:'flex',justifyContent:'space-around',alignItems:'center'}}>
+                            <SkeletonCard/>
+                            <SkeletonCard/>
+                            <SkeletonCard/>
+                        </div>
                         :
                         <div className='coffeeListingContainer'>
                             {data.map((d:CoffeeList)=>(

@@ -1,11 +1,16 @@
-import CoffeeContent from "./components/CoffeeContent";
-import { Header } from "./components/Header"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Login from "./components/auth/Login"
 import './css/index.css';
-function App() {
+import Home from "./components/Home";
+const App=()=>{
   return (
     <>
-      <Header/>
-      <CoffeeContent/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login/>} />
+          <Route path="/home" element={<Home/>} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
