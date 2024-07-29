@@ -13,7 +13,16 @@ const Login=()=>{
         username:'',
         password:''
     });
-
+    const [signup,setSignupData] = useState({
+        name:'',
+        email:'',
+        address:'',
+        password:'',
+        cpassword:''
+    })
+    // const [register,handleSubmit] = useForm(); 
+    // console.log(register);
+    
     const openForm=(type:string)=>{
         setForm(type);
         setActiveForm(true);
@@ -21,7 +30,7 @@ const Login=()=>{
     const loginhandleFunc=(e : React.ChangeEvent<HTMLInputElement>)=>{
         setLoginData({...login,[e.target.name]:e.target.value});
     }
-    const loginFunc=async (e:React.DOMAttributes<HTMLFormElement>)=>{
+    const loginFunc=async (e)=>{
         e.preventDefault();
         try{
             if(login.password!="" && login.password!=""){
@@ -45,6 +54,31 @@ const Login=()=>{
         return (
             <Home/>
         )
+    }
+    const signupFunc=async (e)=>{
+        e.preventDefault();
+        // console.log(signup);
+        const signupUrl="http://127.0.0.1:200/register";
+        const data = await axios.post(signupUrl,signup);
+        console.log(data);
+        
+        if(data.status==200){
+            toast.success(data.data?.msg);
+            setSignupData({
+                name:'',
+                email:'',
+                address:'',
+                password:'',
+                cpassword:''
+            });
+            navigate('/login');
+        }else{
+            toast.error(data.data?.msg);
+        }
+        
+    }
+    const signupHandleFunc=(e:React.ChangeEvent<HTMLInputElement>)=>{
+        setSignupData({...signup,[e.target.name]:e.target.value});
     }
     return(
         <>
@@ -70,14 +104,19 @@ const Login=()=>{
                                     </div>
                                 </form>
                                 :
-                            <div className='signup'>
-                                <input type="text" placeholder='Enter your name' />
-                                <input type="email" placeholder='Enter your email' />
-                                <input type="text" placeholder='Enter your address' />
-                                <input type="password" placeholder='Enter password' />
-                                <input type="password" placeholder='Enter confirm password' />
-                                <button>Register</button>
-                            </div>
+                            <form onSubmit={signupFunc}>
+                                <div className='signup'>
+                                    <input type="text" name="name" value={signup.name} placeholder='Enter your name' onChange={signupHandleFunc}/>
+                                    {/* {errors.firstName?.type === "required" && (
+                                        <p role="alert">First name is required</p>
+                                    )} */}
+                                    <input type="email" name="email"  value={signup.email} placeholder='Enter your email' onChange={signupHandleFunc}/>
+                                    <input type="text" name="address"  value={signup.address} placeholder='Enter your address' onChange={signupHandleFunc}/>
+                                    <input type="password" name="password" value={signup.password} placeholder='Enter password' onChange={signupHandleFunc}/>
+                                    <input type="password" name="cpassword" value={signup.cpassword} placeholder='Enter confirm password'onChange={signupHandleFunc}/>
+                                    <button>Register</button>
+                                </div>
+                            </form>
                             }
                         </div>
                     </div>

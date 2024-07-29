@@ -18,3 +18,11 @@ export interface CoffeeModalProps {
     data: CoffeeList;
     onClose: () => void;
 }
+
+export interface SignupData {
+    name:string,
+    email:string,
+    address:string,
+    password:string,
+    cpassword:string
+}

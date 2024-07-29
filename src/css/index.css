@@ -348,3 +348,35 @@ body{
 }
 
 /* skeleton */
+
+.user-panel-heading{
+    padding: 5px 10px;
+}
+.user-panel-heading:hover{
+    background-color: #BEE3CC;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.profile-Deatils input,button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.profile-Deatils input:focus{
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+.profile-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.profile-logout{
+    transition: ease-in-out;
+}
+.profile-logout:hover{
+    transform: scale(1.5);
+    cursor: pointer;
+    color: red;
+}

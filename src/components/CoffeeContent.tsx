@@ -58,7 +58,7 @@ const CoffeeContent:React.FC= () => {
                     {
                         isLoading
                         ?
-                        <div style={{display:'flex',justifyContent:'space-around',alignItems:'center'}}>
+                        <div style={{display:'flex',justifyContent:'space-around',alignItems:'center',flexWrap:'wrap'}}>
                             <SkeletonCard/>
                             <SkeletonCard/>
                             <SkeletonCard/>
