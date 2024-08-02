@@ -26,3 +26,13 @@ export interface SignupData {
     password:string,
     cpassword:string
 }
+
+export interface ProfileType{
+    id:number,
+    name:string,
+    email:string,
+    address:string,
+    password:string,
+    createdAt:string,
+    updatedAt:string
+}
